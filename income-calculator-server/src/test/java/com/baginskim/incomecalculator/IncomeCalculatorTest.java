@@ -71,7 +71,7 @@ public class IncomeCalculatorTest {
 		assertThat(bigDecimal).isZero();
 	}
 
-	private static final byte DAY_PER_MONTH = 22;
+	static final byte DAY_PER_MONTH = 22;
 
 	private static final BigDecimal CHF_RATE = BigDecimal.valueOf(3.4500);
 

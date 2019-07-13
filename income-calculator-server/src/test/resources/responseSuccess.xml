@@ -1,0 +1,12 @@
+<ExchangeRatesSeries xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Table>A</Table>
+	<Currency>funt szterling</Currency>
+	<Code>GBP</Code>
+	<Rates>
+		<Rate>
+			<No>134/A/NBP/2019</No>
+			<EffectiveDate>2019-07-12</EffectiveDate>
+			<Mid>4.7513</Mid>
+		</Rate>
+	</Rates>
+</ExchangeRatesSeries>

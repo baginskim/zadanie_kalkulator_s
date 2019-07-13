@@ -1,6 +1,7 @@
 package com.baginskim.incomecalculator;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import lombok.RequiredArgsConstructor;
 
@@ -8,7 +9,8 @@ import lombok.RequiredArgsConstructor;
 class IncomeCalculator {
 
 	BigDecimal calculateIncomeInPln(int grossDailySalary, IncomeCountry incomeCountry, BigDecimal rate) {
-		return incomeInForeignCurrency(incomeCountry, grossDailySalary).multiply(rate).setScale(TWO_DIGITS_SCALE);
+		return incomeInForeignCurrency(incomeCountry, grossDailySalary).multiply(rate)
+				.setScale(TWO_DIGITS_SCALE, RoundingMode.DOWN);
 	}
 
 	private static final byte TWO_DIGITS_SCALE = 2;
