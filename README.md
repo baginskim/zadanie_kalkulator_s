@@ -1,11 +1,10 @@
 # Income calculator
 
 # Required libs/tools
-JDK 8
-Maven
+JDK 8, Maven
 
 # Development - server
-Run IncomeCalculatorApplication from IDE
+Run `IncomeCalculatorApplication` from IDE
 or
 `mvn spring-boot:run` in `income-calculator-server` directory
 
