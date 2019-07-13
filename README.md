@@ -15,7 +15,7 @@ or
 # Development - front
 TODO marek.baginski
 
-#Using
+# Using
 ### get all available countries
 `curl http://[server.host]:[server.port]/countries` e.g. `curl http://localhost:8080/countries`
 
