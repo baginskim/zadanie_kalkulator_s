@@ -1,5 +1,7 @@
 package com.baginskim.incomecalculator;
 
+import static java.math.BigDecimal.ONE;
+
 import java.math.BigDecimal;
 import java.util.Optional;
 
@@ -15,7 +17,11 @@ class IncomeCalculatorService {
 		return incomeCalculator.calculateIncomeInPln(
 				dailySalary,
 				incomeCountryOptional.get(),
-				rateGetter.getRate(incomeCountryOptional.get().getCurrency()));
+				isPln(incomeCountryOptional) ? ONE : rateGetter.getRate(incomeCountryOptional.get().getCurrency()));
+	}
+
+	private boolean isPln(Optional<IncomeCountry> incomeCountryOptional) {
+		return "PLN".equalsIgnoreCase(incomeCountryOptional.get().getCurrency());
 	}
 
 	private final IncomeCalculator incomeCalculator;

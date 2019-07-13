@@ -38,7 +38,7 @@ public class IncomeCalculatorServiceTest {
 	@Test
 	public void shouldCalculateIncome() {
 		//given
-		when(rateGetterMock.getRate("USD")).thenReturn(BigDecimal.ONE);
+		when(rateGetterMock.getRate("USD")).thenReturn(BigDecimal.TEN);
 		when(incomeCountryRepositoryMock.findById(COUNTRY_ID)).thenReturn(Optional.of(IncomeCountry.builder()
 				.tax((byte) 5)
 				.currency("USD")
@@ -49,7 +49,23 @@ public class IncomeCalculatorServiceTest {
 		BigDecimal income = incomeCalculatorService.getIncome(COUNTRY_ID, SALARY);
 
 		//then
-		assertThat(income).isGreaterThan(BigDecimal.ZERO);
+		assertThat(income).isEqualTo(new BigDecimal("167450.00"));
+	}
+
+	@Test
+	public void shouldHandlePlnCurrency() {
+		//given
+		when(incomeCountryRepositoryMock.findById(COUNTRY_ID)).thenReturn(Optional.of(IncomeCountry.builder()
+				.tax((byte) 5)
+				.currency("PLN")
+				.cost(500)
+				.build()));
+
+		//when
+		BigDecimal income = incomeCalculatorService.getIncome(COUNTRY_ID, SALARY);
+
+		//then
+		assertThat(income).isEqualTo(new BigDecimal("16745.00"));
 	}
 
 	private static final Long COUNTRY_ID = 1L;
