@@ -14,3 +14,11 @@ or
 
 # Development - front
 TODO marek.baginski
+
+#Using
+### get all available countries
+`curl http://[server.host]:[server.port]/countries` e.g. `curl http://localhost:8080/countries`
+
+### get monthly income
+`curl http://[server.host]:[server.port]/income/[countryId]/[dailyGrossSalary]` e.g. `curl http://localhost:8080/income/1/850`
+
