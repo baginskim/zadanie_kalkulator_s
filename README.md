@@ -1,7 +1,7 @@
 # Income calculator
 
 # Required libs/tools
-JDK 8, Maven
+JDK 8, Maven, Node 10.9+, Angular 8.1+
 
 # Development - server
 Run `IncomeCalculatorApplication` from IDE
@@ -13,9 +13,9 @@ or
 
 
 # Development - front
-TODO marek.baginski
+run `ng serve --open`
 
-# Using
+# Using rest API
 ### get all available countries
 `curl http://[server.host]:[server.port]/countries` e.g. `curl http://localhost:8080/countries`
 

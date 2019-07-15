@@ -1,0 +1,18 @@
+<h4>Type your gross salary, select country and press calculate!</h4>
+<div>
+  <label for="grossSalary">Gross salary</label>
+  <input name="grossSalary" type="number" min="0" max="100000" [(ngModel)]="grossSalary"/>
+</div>
+<div>
+  <label for="incomeCountry">Country</label>
+  <select name="incomeCountry"  [(ngModel)]="selectedCountryId">
+    <option *ngFor="let country of countries" value="{{country.id}}" >{{country.name}}</option>
+  </select>
+
+</div>
+<div>
+  <button (click)="calculate()">Calculate</button>
+</div>
+<div *ngIf="income">
+  <app-income-display [income]="income" [selectedCountry]="getSelectedCountry()"></app-income-display>
+</div>
