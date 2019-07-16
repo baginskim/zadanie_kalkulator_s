@@ -11,11 +11,13 @@ import org.springframework.web.client.RestTemplate;
 class IncomeCalculatorInjector {
 
 	@Bean
-	public IncomeCalculatorService incomeCalculatorService(RestTemplate restTemplate) {
-		return new IncomeCalculatorService(
-				new IncomeCalculator(dayPerMonth),
-				new RateGetter(exchangeRateUrl, restTemplate),
-				incomeCountryRepository);
+	public IncomeCalculatorService incomeCalculatorService(RateGetter rateGetter) {
+		return new IncomeCalculatorService(new IncomeCalculator(dayPerMonth), rateGetter, incomeCountryRepository);
+	}
+
+	@Bean
+	RateGetter rateGetter(RestTemplate restTemplate) {
+		return new RateGetter(exchangeRateUrl, restTemplate);
 	}
 
 	@Bean

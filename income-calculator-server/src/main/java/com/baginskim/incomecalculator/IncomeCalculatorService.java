@@ -17,7 +17,9 @@ class IncomeCalculatorService {
 		return incomeCalculator.calculateIncomeInPln(
 				dailySalary,
 				incomeCountry,
-				isPln(incomeCountry) ? ONE : rateGetter.getRate(incomeCountry.getCurrency()));
+				isPln(incomeCountry) ?
+						ONE :
+						rateGetter.getRate(incomeCountry.getCurrency()).orElseThrow(IllegalStateException::new));
 	}
 
 	private boolean isPln(IncomeCountry incomeCountryOptional) {

@@ -38,7 +38,7 @@ public class IncomeCalculatorServiceTest {
 	@Test
 	public void shouldCalculateIncome() {
 		//given
-		when(rateGetterMock.getRate("USD")).thenReturn(BigDecimal.TEN);
+		when(rateGetterMock.getRate("USD")).thenReturn(Optional.of(BigDecimal.TEN));
 		when(incomeCountryRepositoryMock.findById(COUNTRY_ID)).thenReturn(Optional.of(IncomeCountry.builder()
 				.tax((byte) 5)
 				.currency("USD")
@@ -50,6 +50,24 @@ public class IncomeCalculatorServiceTest {
 
 		//then
 		assertThat(income).isEqualTo(new BigDecimal("167450.00"));
+	}
+
+
+	@Test(expected = IllegalStateException.class)
+	public void shouldHandleNoResonseFromRateGetter() {
+		//given
+		when(rateGetterMock.getRate("USD")).thenReturn(Optional.empty());
+		when(incomeCountryRepositoryMock.findById(COUNTRY_ID)).thenReturn(Optional.of(IncomeCountry.builder()
+				.tax((byte) 5)
+				.currency("USD")
+				.cost(500)
+				.build()));
+
+		//when
+		incomeCalculatorService.getIncome(COUNTRY_ID, SALARY);
+
+		//then
+		// exception is thrown
 	}
 
 	@Test

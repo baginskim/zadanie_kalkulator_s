@@ -1,2 +1,13 @@
 exchangerete:
   url: http://api.nbp.pl/api/exchangerates/rates/a/
+
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      ringBufferSizeInClosedState: 50
+      ringBufferSizeInHalfOpenState: 3
+      automaticTransitionFromOpenToHalfOpenEnabled: false
+      waitInterval: 20000
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10

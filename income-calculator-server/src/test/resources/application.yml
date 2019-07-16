@@ -1,2 +1,7 @@
 exchangerete:
   url: http://localhost:1234/api/exchangerates/rates/a/
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      ringBufferSizeInClosedState: 10
+      failureRateThreshold: 50
