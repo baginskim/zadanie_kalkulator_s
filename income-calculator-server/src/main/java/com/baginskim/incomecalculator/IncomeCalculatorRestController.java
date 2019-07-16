@@ -16,7 +16,7 @@ class IncomeCalculatorRestController {
 
 	@GetMapping(path = "income/{countryId}/{dailySalary}")
 	public BigDecimal getIncome(@PathVariable @NonNull Long countryId, @PathVariable @NonNull int dailySalary) {
-		log.info("> getIncome countryId={}. dailySalary={}", countryId, dailySalary);
+		log.info("> getIncome countryId={}, dailySalary={}", countryId, dailySalary);
 
 		BigDecimal result = incomeCalculatorService.getIncome(countryId, dailySalary);
 

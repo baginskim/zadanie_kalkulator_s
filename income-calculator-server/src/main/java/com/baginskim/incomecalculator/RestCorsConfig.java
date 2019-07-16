@@ -2,14 +2,13 @@ package com.baginskim.incomecalculator;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-/**
- * TODO marek.baginski add profile for development only and enable this configuration in that profile
- */
 @Configuration
+@Profile("local-dev")
 class RestCorsConfig {
 
 	@Bean

@@ -26,7 +26,7 @@ class IncomeCalculator {
 				HUNDRED_PERCENT)));
 	}
 
-	private BigDecimal salarayToTax(IncomeCountry incomeCountry, int monthlySalary) {
+	private BigDecimal salarayToTax(IncomeCountry incomeCountry, long monthlySalary) {
 		return monthlySalary < incomeCountry.getCost() ?
 				BigDecimal.ZERO :
 				BigDecimal.valueOf(monthlySalary - incomeCountry.getCost());

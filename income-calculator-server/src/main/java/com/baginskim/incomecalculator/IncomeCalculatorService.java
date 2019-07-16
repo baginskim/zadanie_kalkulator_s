@@ -12,16 +12,16 @@ class IncomeCalculatorService {
 
 	public BigDecimal getIncome(Long countryId, int dailySalary) {
 		Optional<IncomeCountry> incomeCountryOptional = incomeCountryRepository.findById(countryId);
-		incomeCountryOptional.orElseThrow(IllegalArgumentException::new);
+		IncomeCountry incomeCountry = incomeCountryOptional.orElseThrow(IllegalArgumentException::new);
 
 		return incomeCalculator.calculateIncomeInPln(
 				dailySalary,
-				incomeCountryOptional.get(),
-				isPln(incomeCountryOptional) ? ONE : rateGetter.getRate(incomeCountryOptional.get().getCurrency()));
+				incomeCountry,
+				isPln(incomeCountry) ? ONE : rateGetter.getRate(incomeCountry.getCurrency()));
 	}
 
-	private boolean isPln(Optional<IncomeCountry> incomeCountryOptional) {
-		return "PLN".equalsIgnoreCase(incomeCountryOptional.get().getCurrency());
+	private boolean isPln(IncomeCountry incomeCountryOptional) {
+		return "PLN".equalsIgnoreCase(incomeCountryOptional.getCurrency());
 	}
 
 	private final IncomeCalculator incomeCalculator;

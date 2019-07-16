@@ -1,6 +1,2 @@
 exchangerete:
   url: http://api.nbp.pl/api/exchangerates/rates/a/
-spring:
-  h2:
-    console:
-      enabled: true
