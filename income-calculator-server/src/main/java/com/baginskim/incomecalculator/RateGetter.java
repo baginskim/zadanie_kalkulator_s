@@ -1,7 +1,9 @@
 package com.baginskim.incomecalculator;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.http.ResponseEntity;
@@ -18,7 +20,7 @@ class RateGetter {
 	public Optional<BigDecimal> getRate(String currency) {
 		ResponseEntity<ExchangeRatesSeries>
 				exchangeRate =
-				restTemplate.getForEntity(exchangeRateUrl + currency, ExchangeRatesSeries.class);
+				restTemplate.getForEntity(exchangeRateUrl + currency, ExchangeRatesSeries.class, PARAMS);
 		if (exchangeRate.getBody().getRates() == null || exchangeRate.getBody().getRates().isEmpty()) {
 			return Optional.empty();
 		}
@@ -39,6 +41,12 @@ class RateGetter {
 	static class ExchangeRatesSeries {
 
 		private List<ExchangeRate> rates;
+	}
+
+	private static final Map<String, String> PARAMS = new HashMap<>();
+
+	static {
+		PARAMS.put("format","json");
 	}
 
 	private final String exchangeRateUrl;
