@@ -64,7 +64,7 @@ public class IncomeCalculatorRestControllerTest {
 				+ port
 				+ "/income/"
 				+ savedIncomeCountry.getId()
-				+ "/850", String.class).getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+				+ "/850", String.class).getStatusCode()).isEqualTo(HttpStatus.SERVICE_UNAVAILABLE);
 	}
 
 	@Test
@@ -82,7 +82,7 @@ public class IncomeCalculatorRestControllerTest {
 				+ port
 				+ "/income/"
 				+ savedIncomeCountry.getId()
-				+ "/850", String.class).getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+				+ "/850", String.class).getStatusCode()).isEqualTo(HttpStatus.SERVICE_UNAVAILABLE);
 	}
 
 	@Test

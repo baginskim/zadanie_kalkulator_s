@@ -17,12 +17,12 @@ class ControllerExceptionHandler {
 
 	@ExceptionHandler(IllegalStateException.class)
 	public final ResponseEntity<Error> handleEmptyResponse(IllegalStateException ex, WebRequest request) {
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
 	}
 
 	@ExceptionHandler(HttpClientErrorException.class)
 	public final ResponseEntity<Error> handleNotFound(HttpClientErrorException ex, WebRequest request) {
-		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
 	}
 
 }
