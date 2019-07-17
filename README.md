@@ -3,7 +3,7 @@
 # Required libs/tools
 JDK 8, Maven, Node 10.9+, Angular 8.1+
 
-# Development - server
+# Development - running server application
 Run `IncomeCalculatorApplication` with profile `local-dev` from IDE
 or
 `mvn spring-boot:run -Dspring.profiles.active="local-dev"` in `income-calculator-server` directory
@@ -12,8 +12,8 @@ or
 `curl http://[server.host]:[server.port]/actuator/health` e.g. `curl http://localhost:8080/actuator/health`
 
 
-# Development - front
-run `ng serve --open`
+# Development - runnig angular application
+run `ng serve --open` in `income-calculator-front`
 
 # Using rest API
 ### get all available countries
